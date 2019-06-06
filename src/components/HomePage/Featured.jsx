@@ -1,7 +1,29 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { ProductConsumer } from "../../context/context";
+import Title from "./../Title";
+import Product from "../Product";
 
 const Featured = () => {
-  return <h1>hello from featured</h1>;
+  return (
+    <section className="py-5">
+      <div className="container">
+        {/* title */}
+        <Title title="featured products" center="true" />
+        {/* products */}
+        <div className="row">
+          <ProductConsumer>
+            {value => {
+              const { featuredProducts } = value;
+              return featuredProducts.map(product => (
+                <Product key={product.id} product={product} />
+              ));
+            }}
+          </ProductConsumer>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Featured;
