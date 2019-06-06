@@ -17,7 +17,7 @@ const Product = ({ product }) => {
                   src={product.image}
                   alt="store product"
                   className="card-img-top p-5"
-                  style={{ height: "320px" }}
+                  // style={{ height: "320px" }}
                 />
                 <div className="product-icons">
                   <Link
@@ -32,9 +32,9 @@ const Product = ({ product }) => {
                   />
                 </div>
               </div>
-              <div className="card-body d-flex justify-content-between">
-                <p className="mb-0 align-self-center">{product.title}</p>
-                <p className="mb-0 main-text">{product.price}</p>
+              <div className="card-body d-flex justify-content-between align-items-center">
+                <p className="mb-0">{product.title}</p>
+                <p className="mb-0 main-text ml-2">{product.price}</p>
               </div>
             </div>
           </ProductWrapper>
