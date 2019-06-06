@@ -17,6 +17,10 @@
   letter-spacing: var(--mainSpacing);
   text-transform: capitalize;
 }
+.main-text {
+  font-size: 1.5rem;
+  color: var(--mainBlue);
+}
 .main-link {
   padding: 0.5rem 1.5rem;
   background: var(--mainBlue);
