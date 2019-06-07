@@ -37,7 +37,6 @@ class ProductProvider extends Component {
     });
     //filter be featured
     let featuredProducts = storeProducts.filter(item => item.featured);
-    console.log(featuredProducts);
     //setting state
     this.setState(
       {
