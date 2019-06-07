@@ -54,7 +54,13 @@ class ProductProvider extends Component {
     );
   };
   getStorageCart = () => {
-    return [];
+    let cart;
+    if (localStorage.getItem("cart")) {
+      cart = JSON.parse(localStorage.getItem("cart"));
+    } else {
+      cart = [];
+    }
+    return cart;
   };
   getStorageProduct = () => {
     return {};
@@ -87,7 +93,9 @@ class ProductProvider extends Component {
       cartTotal: totals.total
     });
   };
-  syncStorage = () => {};
+  syncStorage = () => {
+    localStorage.setItem("cart", JSON.stringify(this.state.cart));
+  };
   addToCart = id => {
     let tempCart = [...this.state.cart];
     let tempProducts = [...this.state.storeProducts];
