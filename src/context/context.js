@@ -209,7 +209,32 @@ class ProductProvider extends Component {
     this.setState({ [name]: value }, this.sortData);
   };
   sortData = () => {
-    console.log("sorting");
+    const { storeProducts, search, company, price, shipping } = this.state;
+    let tempPrice = parseInt(price);
+    let tempProducts = [...storeProducts];
+    // filtering by company
+    if (company !== "all") {
+      tempProducts = tempProducts.filter(
+        product => product.company === company
+      );
+    }
+    //filtering by price
+    tempProducts = tempProducts.filter(product => product.price <= tempPrice);
+    //filtering by free shipping
+    if (shipping) {
+      tempProducts = tempProducts.filter(product => product.freeShipping);
+    }
+    //filtering by search
+    if (search.length > 0) {
+      tempProducts = tempProducts.filter(product => {
+        let tempSearch = search.toLowerCase();
+        let tempTitle = product.title.toLowerCase().slice(0, search.length);
+        if (tempSearch === tempTitle) {
+          return product;
+        }
+      });
+    }
+    this.setState({ filteredProducts: tempProducts });
   };
   render() {
     return (
