@@ -167,7 +167,10 @@ class ProductProvider extends Component {
     });
   };
   clearCart = () => {
-    console.log("cleared");
+    this.setState({ cart: [] }, () => {
+      this.addTotals();
+      this.syncStorage();
+    });
   };
   render() {
     return (
