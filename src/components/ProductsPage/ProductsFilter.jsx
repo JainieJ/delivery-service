@@ -16,6 +16,13 @@ const ProductsFilter = () => {
           storeProducts,
           handleChange
         } = value;
+        // getting the unique names of companies for options in select input
+        let companies = new Set();
+        companies.add("all");
+        for (let product in storeProducts) {
+          companies.add(storeProducts[product]["company"]);
+        }
+        companies = [...companies];
         return (
           <div className="row my-5">
             <div className="col-10 mx-auto">
@@ -42,9 +49,13 @@ const ProductsFilter = () => {
                     value={company}
                     className="filter-item"
                   >
-                    <option value="all">all</option>
-                    <option value="fuji">fuji</option>
-                    <option value="htc">htc</option>
+                    {companies.map((company, index) => {
+                      return (
+                        <option key={index} value={company}>
+                          {company}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
                 {/* price range */}
@@ -75,7 +86,7 @@ const ProductsFilter = () => {
                     name="shipping"
                     id="shipping"
                     onChange={handleChange}
-                    value={shipping && true}
+                    checked={shipping && true}
                   />
                 </div>
               </FilterWrapper>
