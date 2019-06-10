@@ -40,6 +40,10 @@
   outline-color: var(--mainDarkGrey);
 }
 
+.cart-icon {
+  cursor: pointer;
+}
+
 body {
   font-family: "Open Sans", sans-serif !important;
   background: var(--mainWhite) !important;
