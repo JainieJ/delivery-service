@@ -4,7 +4,6 @@ import storeBcg from "../img/images/storeBcg.jpeg";
 import Hero from "./../components/Hero";
 
 class CartPage extends Component {
-  state = {};
   render() {
     return (
       <>
